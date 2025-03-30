@@ -48,36 +48,36 @@ const Calendar: React.FC = () => {
   };
   
   return (
-    <div className="clock-card mt-4 animate-slide-up">
+    <div className="rounded-3xl p-6 bg-gradient-to-br from-green-500 to-emerald-500 shadow-[0_0_25px_rgba(16,185,129,0.5)] border-2 border-white/20 backdrop-blur-xl animate-slide-up">
       <div className="flex justify-between items-center mb-4">
         <div className="flex items-center">
-          <CalendarIcon className="w-5 h-5 mr-2 text-clock-accent" />
-          <h3 className="text-lg font-semibold text-clock-text">Calendar</h3>
+          <CalendarIcon className="w-6 h-6 mr-2 text-yellow-300" />
+          <h3 className="text-2xl font-bold text-white font-orbitron">Calendar</h3>
         </div>
         <div className="flex items-center space-x-4">
           <button 
             onClick={goToPreviousMonth}
-            className="p-1 rounded-full hover:bg-muted/40 transition-colors"
+            className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
             aria-label="Previous month"
           >
-            <ChevronLeft className="w-5 h-5 text-clock-secondary" />
+            <ChevronLeft className="w-5 h-5 text-white" />
           </button>
-          <span className="text-clock-text font-medium">
+          <span className="text-white font-bold text-lg">
             {getMonth(new Date(calendarYear, calendarMonth))} {calendarYear}
           </span>
           <button 
             onClick={goToNextMonth}
-            className="p-1 rounded-full hover:bg-muted/40 transition-colors"
+            className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
             aria-label="Next month"
           >
-            <ChevronRight className="w-5 h-5 text-clock-secondary" />
+            <ChevronRight className="w-5 h-5 text-white" />
           </button>
         </div>
       </div>
       
       <div className="grid grid-cols-7 gap-1 mb-2">
         {weekdays.map(day => (
-          <div key={day} className="text-center text-xs font-medium text-clock-secondary py-2">
+          <div key={day} className="text-center text-sm font-bold text-yellow-200 py-2">
             {day}
           </div>
         ))}
@@ -89,8 +89,10 @@ const Calendar: React.FC = () => {
             key={index}
             className={`
               text-center py-2 text-sm rounded-md transition-colors
-              ${day.currentMonth ? 'text-clock-text' : 'text-clock-secondary/40'}
-              ${isToday(day.date) ? 'bg-clock-accent/20 font-bold' : ''}
+              ${day.currentMonth ? 'text-white' : 'text-white/40'}
+              ${isToday(day.date) 
+                ? 'bg-gradient-to-r from-yellow-300 to-amber-400 text-emerald-800 font-bold' 
+                : 'hover:bg-white/10'}
             `}
           >
             {day.date}

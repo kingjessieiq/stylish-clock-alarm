@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { IntervalAlarm, TimeAlarm, checkIntervalAlarm, checkTimeAlarm, generateId, ALARM_SOUNDS } from '../utils/alarmUtils';
 import { toast } from '@/hooks/use-toast';
@@ -118,7 +117,7 @@ export const useAlarm = () => {
     toast({
       title: 'Alarm!',
       description: alarm.label || (
-        'interval' in alarm 
+        'hours' in alarm 
           ? `Interval Alarm (${alarm.hours}h ${alarm.minutes}m)` 
           : `Time Alarm (${alarm.time.toLocaleTimeString()})`
       ),

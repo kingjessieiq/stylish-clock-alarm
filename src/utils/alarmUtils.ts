@@ -24,6 +24,11 @@ export const ALARM_SOUNDS = [
   { id: 'alarm3', name: 'Emergency Siren', path: 'https://assets.mixkit.co/active_storage/sfx/209/209-preview.mp3' },
   { id: 'alarm4', name: 'Police Siren', path: 'https://assets.mixkit.co/active_storage/sfx/1667/1667-preview.mp3' },
   { id: 'alarm5', name: 'Fire Alarm', path: 'https://assets.mixkit.co/active_storage/sfx/2865/2865-preview.mp3' },
+  { id: 'alarm6', name: 'Air Horn', path: 'https://assets.mixkit.co/active_storage/sfx/2864/2864-preview.mp3' },
+  { id: 'alarm7', name: 'Laser Blast', path: 'https://assets.mixkit.co/active_storage/sfx/146/146-preview.mp3' },
+  { id: 'alarm8', name: 'UFO Alarm', path: 'https://assets.mixkit.co/active_storage/sfx/2741/2741-preview.mp3' },
+  { id: 'alarm9', name: 'Robot Alert', path: 'https://assets.mixkit.co/active_storage/sfx/2867/2867-preview.mp3' },
+  { id: 'alarm10', name: 'Arcade Alert', path: 'https://assets.mixkit.co/active_storage/sfx/582/582-preview.mp3' },
 ];
 
 export const generateId = (): string => {
