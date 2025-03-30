@@ -21,9 +21,9 @@ const AlarmSystem: React.FC = () => {
   } = useAlarm();
   
   return (
-    <div className="h-full rounded-3xl p-6 bg-gradient-to-br from-fuchsia-500 via-purple-600 to-indigo-500 shadow-[0_0_25px_rgba(217,70,239,0.5)] border-2 border-white/20 backdrop-blur-xl">
+    <div className="h-full rounded-3xl p-6 bg-[#4c49ca] shadow-[0_0_25px_rgba(76,73,202,0.5)] border-2 border-white/20 backdrop-blur-xl">
       <div className="flex items-center justify-center mb-6">
-        <Bell className="w-8 h-8 text-yellow-300 mr-3" />
+        <Bell className="w-8 h-8 text-[#ffd700] mr-3" />
         <h2 className="text-3xl font-bold text-white font-orbitron tracking-wider">Super Alarms</h2>
       </div>
       

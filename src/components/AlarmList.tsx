@@ -14,9 +14,9 @@ const AlarmList: React.FC<AlarmListProps> = ({ activeAlarm, onStopAlarm }) => {
   
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="max-w-md w-full rounded-xl p-6 shadow-[0_0_40px_rgba(139,92,246,0.8)] animate-alarm-ring bg-gradient-to-br from-purple-600 via-fuchsia-500 to-pink-500 border-2 border-white/30">
+      <div className="max-w-md w-full rounded-xl p-6 shadow-[0_0_40px_rgba(76,73,202,0.8)] animate-alarm-ring bg-[#4c49ca] border-2 border-white/30">
         <div className="flex flex-col items-center space-y-6">
-          <Bell className="w-24 h-24 text-yellow-300 animate-pulse" />
+          <Bell className="w-24 h-24 text-[#ffd700] animate-pulse" />
           <h2 className="text-4xl font-bold text-white font-orbitron tracking-wider">WAKE UP!</h2>
           
           <div className="text-2xl text-center mb-2 text-white">
@@ -27,7 +27,7 @@ const AlarmList: React.FC<AlarmListProps> = ({ activeAlarm, onStopAlarm }) => {
           </div>
           
           {activeAlarm.label && (
-            <div className="text-xl text-yellow-200 font-medium">
+            <div className="text-xl text-[#ffd700] font-medium">
               {activeAlarm.label}
             </div>
           )}
