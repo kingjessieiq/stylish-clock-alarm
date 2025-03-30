@@ -12,11 +12,15 @@ const Index = () => {
         <div className="space-y-6">
           <Clock />
           <Calendar />
-          <WorldTime />
         </div>
         <div>
           <AlarmSystem />
         </div>
+      </div>
+      
+      {/* World Time in its own section below */}
+      <div className="max-w-6xl mx-auto mt-8">
+        <WorldTime />
       </div>
     </div>
   );
