@@ -20,12 +20,18 @@ const CITIES: TimeZoneCity[] = [
   { name: 'Hong Kong', timezone: 'Asia/Hong_Kong', emoji: '🇭🇰' },
   { name: 'Rome', timezone: 'Europe/Rome', emoji: '🇮🇹' },
   { name: 'Berlin', timezone: 'Europe/Berlin', emoji: '🇩🇪' },
+  { name: 'Moscow', timezone: 'Europe/Moscow', emoji: '🇷🇺' },
+  { name: 'Singapore', timezone: 'Asia/Singapore', emoji: '🇸🇬' },
+  { name: 'Cairo', timezone: 'Africa/Cairo', emoji: '🇪🇬' },
+  { name: 'Rio de Janeiro', timezone: 'America/Sao_Paulo', emoji: '🇧🇷' },
+  { name: 'Mexico City', timezone: 'America/Mexico_City', emoji: '🇲🇽' },
+  { name: 'Toronto', timezone: 'America/Toronto', emoji: '🇨🇦' },
 ];
 
 const WorldTime: React.FC = () => {
   const [currentTimes, setCurrentTimes] = useState<Record<string, string>>({});
   const [expanded, setExpanded] = useState(false);
-  const [visibleCities, setVisibleCities] = useState<TimeZoneCity[]>(CITIES.slice(0, 4));
+  const [visibleCities, setVisibleCities] = useState<TimeZoneCity[]>(CITIES.slice(0, 8));
   
   useEffect(() => {
     const updateTimes = () => {
@@ -58,27 +64,28 @@ const WorldTime: React.FC = () => {
   
   const toggleExpand = () => {
     setExpanded(!expanded);
-    setVisibleCities(expanded ? CITIES.slice(0, 4) : CITIES);
+    setVisibleCities(expanded ? CITIES.slice(0, 8) : CITIES);
   };
   
   return (
-    <div className="rounded-3xl p-6 bg-[#f0f0f0] shadow-[0_0_25px_rgba(0,0,0,0.1)] border-2 border-white/20 backdrop-blur-xl">
-      <div className="flex items-center mb-4">
-        <Globe className="w-6 h-6 mr-2 text-[#ffd700]" />
-        <h3 className="text-2xl font-bold text-[#333] font-orbitron">World Time</h3>
+    <div className="rounded-3xl p-6 bg-[#4c49ca] shadow-[0_0_25px_rgba(76,73,202,0.5)] border-2 border-white/20 backdrop-blur-xl">
+      <div className="flex items-center mb-6">
+        <Globe className="w-8 h-8 text-[#ffd700] mr-3" />
+        <h3 className="text-3xl font-bold text-white font-orbitron tracking-wider">World Clock</h3>
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {visibleCities.map(city => (
           <div 
             key={city.name} 
-            className="rounded-xl p-4 bg-[#4c49ca]/10 hover:bg-[#4c49ca]/20 transition-colors"
+            className="rounded-xl p-4 bg-white/10 hover:bg-white/20 transition-colors"
           >
-            <div className="flex justify-between items-center">
-              <span className="text-lg font-medium text-[#333]">
-                {city.emoji} {city.name}
+            <div className="flex flex-col items-center text-center">
+              <span className="text-2xl mb-1">{city.emoji}</span>
+              <span className="text-lg font-medium text-white mb-1">
+                {city.name}
               </span>
-              <span className="text-xl font-orbitron font-bold text-[#4c49ca]">
+              <span className="text-xl font-orbitron font-bold text-[#ffd700]">
                 {currentTimes[city.name] || '--:--'}
               </span>
             </div>
@@ -88,15 +95,15 @@ const WorldTime: React.FC = () => {
       
       <button 
         onClick={toggleExpand}
-        className="mt-4 w-full py-2 rounded-xl bg-[#4c49ca]/20 hover:bg-[#4c49ca]/30 transition-colors text-[#4c49ca] font-medium flex items-center justify-center"
+        className="mt-6 w-full py-3 rounded-xl bg-white/10 hover:bg-white/20 transition-colors text-white font-medium flex items-center justify-center"
       >
         {expanded ? (
           <>
-            <ChevronUp className="w-5 h-5 mr-1" /> Show Less
+            <ChevronUp className="w-5 h-5 mr-2 text-[#ffd700]" /> Show Less Cities
           </>
         ) : (
           <>
-            <ChevronDown className="w-5 h-5 mr-1" /> Show More
+            <ChevronDown className="w-5 h-5 mr-2 text-[#ffd700]" /> Show More Cities
           </>
         )}
       </button>
