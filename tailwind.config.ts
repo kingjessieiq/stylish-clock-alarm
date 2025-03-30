@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				clock: {
+					bg: '#1E1E2E',
+					accent: '#8B5CF6',
+					highlight: '#D946EF',
+					text: '#FFFFFF',
+					secondary: '#94A3B8',
+					card: '#2D2D3F'
 				}
 			},
 			borderRadius: {
@@ -70,25 +79,42 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				'pulse-scale': {
+					'0%, 100%': { transform: 'scale(1)' },
+					'50%': { transform: 'scale(1.05)' }
+				},
+				'slide-up': {
+					'0%': { transform: 'translateY(10px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				'slide-down': {
+					'0%': { transform: 'translateY(-10px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				'alarm-ring': {
+					'0%, 100%': { transform: 'rotate(-5deg)' },
+					'50%': { transform: 'rotate(5deg)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-scale': 'pulse-scale 2s ease-in-out infinite',
+				'slide-up': 'slide-up 0.3s ease-out',
+				'slide-down': 'slide-down 0.3s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'alarm-ring': 'alarm-ring 0.2s ease-in-out infinite'
 			}
 		}
 	},
