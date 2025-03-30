@@ -59,17 +59,17 @@ const IntervalAlarm: React.FC<IntervalAlarmProps> = ({ alarms, onAdd, onToggle, 
   };
   
   return (
-    <div className="bg-white/10 rounded-xl p-4 animate-slide-up">
+    <div className="clock-card mt-4 animate-slide-up">
       <div className="flex justify-between items-center mb-4">
         <div className="flex items-center">
-          <TimerReset className="w-5 h-5 mr-2 text-[#ffd700]" />
-          <h3 className="text-lg font-semibold text-white">Interval Alarms</h3>
+          <TimerReset className="w-5 h-5 mr-2 text-clock-accent" />
+          <h3 className="text-lg font-semibold text-clock-text">Interval Alarms</h3>
         </div>
         <Button
           variant="outline"
           size="sm"
           onClick={() => setShowForm(!showForm)}
-          className="text-[#ffd700] border-[#ffd700] bg-transparent hover:bg-white/10"
+          className="text-clock-accent border-clock-accent hover:bg-clock-accent/20"
         >
           <Plus className="w-4 h-4 mr-1" />
           Add Alarm
@@ -77,21 +77,21 @@ const IntervalAlarm: React.FC<IntervalAlarmProps> = ({ alarms, onAdd, onToggle, 
       </div>
       
       {showForm && (
-        <form onSubmit={handleSubmit} className="mb-6 p-4 bg-white/5 rounded-lg animate-fade-in">
+        <form onSubmit={handleSubmit} className="mb-6 p-4 bg-muted/20 rounded-lg animate-fade-in">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div className="space-y-2">
-              <Label htmlFor="hours" className="text-white">Hours</Label>
+              <Label htmlFor="hours">Hours</Label>
               <Input
                 id="hours"
                 type="number"
                 min="0"
                 value={hours}
                 onChange={handleHoursChange}
-                className="bg-white/10 border-white/20 text-white"
+                className="bg-background/50"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="minutes" className="text-white">Minutes</Label>
+              <Label htmlFor="minutes">Minutes</Label>
               <Input
                 id="minutes"
                 type="number"
@@ -99,27 +99,27 @@ const IntervalAlarm: React.FC<IntervalAlarmProps> = ({ alarms, onAdd, onToggle, 
                 max="59"
                 value={minutes}
                 onChange={handleMinutesChange}
-                className="bg-white/10 border-white/20 text-white"
+                className="bg-background/50"
               />
             </div>
           </div>
           
           <div className="space-y-2 mb-4">
-            <Label htmlFor="label" className="text-white">Label (optional)</Label>
+            <Label htmlFor="label">Label (optional)</Label>
             <Input
               id="label"
               value={label}
               onChange={(e) => setLabel(e.target.value)}
               placeholder="E.g., Homework reminder"
-              className="bg-white/10 border-white/20 text-white"
+              className="bg-background/50"
             />
           </div>
           
           <div className="space-y-2 mb-4">
-            <Label htmlFor="sound" className="text-white">Alarm Sound</Label>
+            <Label htmlFor="sound">Alarm Sound</Label>
             <div className="flex gap-2">
               <Select value={sound} onValueChange={setSound}>
-                <SelectTrigger className="bg-white/10 border-white/20 text-white flex-grow">
+                <SelectTrigger className="bg-background/50 flex-grow">
                   <SelectValue placeholder="Select a sound" />
                 </SelectTrigger>
                 <SelectContent>
@@ -135,7 +135,7 @@ const IntervalAlarm: React.FC<IntervalAlarmProps> = ({ alarms, onAdd, onToggle, 
                 variant="outline"
                 size="icon"
                 onClick={() => playSound(sound)}
-                className="shrink-0 border-white/20 bg-white/10 text-white hover:bg-white/20"
+                className="shrink-0"
               >
                 <Volume2 className="h-4 w-4" />
               </Button>
@@ -147,14 +147,12 @@ const IntervalAlarm: React.FC<IntervalAlarmProps> = ({ alarms, onAdd, onToggle, 
               type="button"
               variant="outline"
               onClick={() => setShowForm(false)}
-              className="border-white/20 bg-white/10 text-white hover:bg-white/20"
             >
               Cancel
             </Button>
             <Button 
               type="submit"
               disabled={hours <= 0 && minutes <= 0}
-              className="bg-[#ffd700] text-[#4c49ca] hover:bg-[#ffd700]/80"
             >
               Save Alarm
             </Button>
@@ -168,19 +166,19 @@ const IntervalAlarm: React.FC<IntervalAlarmProps> = ({ alarms, onAdd, onToggle, 
             <div
               key={alarm.id}
               className={`p-3 rounded-lg flex justify-between items-center transition-colors ${
-                alarm.enabled ? 'bg-white/20' : 'bg-white/5 opacity-60'
+                alarm.enabled ? 'bg-muted/40' : 'bg-muted/10 opacity-60'
               }`}
             >
               <div>
-                <div className="font-medium text-white">{formatIntervalAlarm(alarm)}</div>
-                {alarm.label && <div className="text-sm text-white/70">{alarm.label}</div>}
+                <div className="font-medium text-clock-text">{formatIntervalAlarm(alarm)}</div>
+                {alarm.label && <div className="text-sm text-clock-secondary">{alarm.label}</div>}
               </div>
               <div className="flex items-center space-x-2">
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => onToggle(alarm.id)}
-                  className={alarm.enabled ? 'text-[#ffd700]' : 'text-white/50 hover:text-white'}
+                  className={alarm.enabled ? 'text-clock-accent' : 'text-clock-secondary'}
                 >
                   {alarm.enabled ? 'Disable' : 'Enable'}
                 </Button>
@@ -188,7 +186,7 @@ const IntervalAlarm: React.FC<IntervalAlarmProps> = ({ alarms, onAdd, onToggle, 
                   variant="ghost"
                   size="sm"
                   onClick={() => onDelete(alarm.id)}
-                  className="text-red-400 hover:text-red-300 hover:bg-red-500/20"
+                  className="text-destructive hover:text-destructive/80"
                 >
                   Delete
                 </Button>
@@ -197,7 +195,7 @@ const IntervalAlarm: React.FC<IntervalAlarmProps> = ({ alarms, onAdd, onToggle, 
           ))}
         </div>
       ) : (
-        <div className="text-center py-8 text-white/70">
+        <div className="text-center py-8 text-clock-secondary">
           No interval alarms set. Add one to get started!
         </div>
       )}

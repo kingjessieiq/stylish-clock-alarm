@@ -8,18 +8,14 @@ import WorldTime from '@/components/WorldTime';
 const Index = () => {
   return (
     <div className="min-h-screen py-8 px-4 bg-[#f8f3e9]">
-      <div className="max-w-6xl mx-auto grid gap-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="space-y-6">
-            <Clock />
-            <Calendar />
-          </div>
-          <div>
-            <AlarmSystem />
-          </div>
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="space-y-6">
+          <Clock />
+          <Calendar />
+          <WorldTime />
         </div>
         <div>
-          <WorldTime />
+          <AlarmSystem />
         </div>
       </div>
     </div>
